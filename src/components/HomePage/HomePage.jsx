@@ -1,7 +1,7 @@
 // import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import carousel styles
-import { FaHistory, FaBullseye, FaHeart, FaConciergeBell } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaStar, FaHistory, FaBullseye, FaHeart, FaConciergeBell, FaUtensils, FaShoppingCart, FaCreditCard, FaTruck } from 'react-icons/fa';
 
 const HomePage = () => {
   return (
@@ -100,20 +100,162 @@ const HomePage = () => {
 </section>
 
 
-      {/* How to Order Section */}
-      <section className="mt-12">
-        <h3 className="text-3xl font-bold text-center text-orange-500">How to Order</h3>
-        <p className="mt-4 text-center">Instructions on how to order go here...</p>
-      </section>
+{/* How to Order Section */}
+<section className="mt-12 h-screen">
+  <h3 className="text-3xl font-bold text-center text-orange-500">Order In Four Simple Steps</h3>
+  <div className="mt-8 max-w-4xl mx-auto">
+    <div className="mb-8 flex items-center">
+      <FaUtensils className="text-orange-500 text-3xl mr-4" />
+      <div>
+        <h4 className="text-2xl font-bold text-gray-800">Browse the Menu</h4>
+        <p className="mt-2 text-gray-600">Once you find your desired restaurant, explore their menu. Many websites allow filtering by category (appetizers, main course, etc.) or searching for specific dishes.</p>
+      </div>
+    </div>
+    <div className="mb-8 flex items-center">
+      <FaShoppingCart className="text-orange-500 text-3xl mr-4" />
+      <div>
+        <h4 className="text-2xl font-bold text-gray-800">Add and Review Items to Your Cart</h4>
+        <p className="mt-2 text-gray-600">Click on the items you want to order. You can often adjust quantities or choose additional options (size, toppings, etc.). Double-check your selections and any special instructions before proceeding.</p>
+      </div>
+    </div>
+    <div className="mb-8 flex items-center">
+      <FaCreditCard className="text-orange-500 text-3xl mr-4" />
+      <div>
+        <h4 className="text-2xl font-bold text-gray-800">Checkout and Payment</h4>
+        <ul className="mt-2 text-gray-600 list-disc list-inside">
+          <li>Login or Create Account: Some websites require an account for checkout, while others allow guest checkout.</li>
+          <li>Delivery Information: Enter your delivery address and any delivery instructions.</li>
+          <li>Payment using M-Pesa.</li>
+          <li>Review and Confirm: Review your order details, including price and estimated delivery time. Confirm your order once everything is correct.</li>
+        </ul>
+      </div>
+    </div>
+    <div className="mb-8 flex items-center">
+      <FaTruck className="text-orange-500 text-3xl mr-4" />
+      <div>
+        <h4 className="text-2xl font-bold text-gray-800">Order Tracking (Optional)</h4>
+        <p className="mt-2 text-gray-600">We offer order tracking, allowing you to see the status of your order and estimated arrival time.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-      {/* Testimonials Section */}
-      <section className="mt-12">
-        <h3 className="text-3xl font-bold text-center text-orange-500">Testimonials</h3>
-        <div className="mt-4">
-          <div className="p-4 bg-white shadow-md">Testimonial 1</div>
-          <div className="p-4 bg-white shadow-md mt-4">Testimonial 2</div>
+{/* Testimonials Section */}
+<section className="mt-12 py-16">
+  <h3 className="text-3xl font-bold text-center text-orange-500">Testimonials</h3>
+  <div className="mt-8 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+    {[
+      {
+        name: 'John Doe',
+        date: 'March 5, 2024',
+        review: 'The seafood here is simply amazing! I had a wonderful experience.',
+        image: 'https://randomuser.me/api/portraits/men/1.jpg',
+        rating: 5,
+      },
+      {
+        name: 'Jane Smith',
+        date: 'April 12, 2024',
+        review: 'Absolutely delicious food and great service. Highly recommend!',
+        image: 'https://randomuser.me/api/portraits/women/2.jpg',
+        rating: 4,
+      },
+      {
+        name: 'Michael Brown',
+        date: 'May 8, 2024',
+        review: 'A delightful dining experience with unique seafood dishes.',
+        image: 'https://randomuser.me/api/portraits/men/3.jpg',
+        rating: 4,
+      },
+      {
+        name: 'Emily Davis',
+        date: 'June 1, 2024',
+        review: 'Exceptional flavors and fantastic customer service.',
+        image: 'https://randomuser.me/api/portraits/women/4.jpg',
+        rating: 5,
+      },
+      {
+        name: 'David Wilson',
+        date: 'June 15, 2024',
+        review: 'A must-visit for seafood lovers. Top-notch quality!',
+        image: 'https://randomuser.me/api/portraits/men/5.jpg',
+        rating: 5,
+      },
+      {
+        name: 'Sarah Johnson',
+        date: 'July 3, 2024',
+        review: 'Great ambiance and even better food. Loved every bite.',
+        image: 'https://randomuser.me/api/portraits/women/6.jpg',
+        rating: 4,
+      },
+    ].map((testimonial, index) => (
+      <div key={index} className="bg-white p-6 rounded-lg shadow-md">
+        <div className="flex items-center mb-4">
+          <img src={testimonial.image} alt={testimonial.name} className="w-12 h-12 rounded-full mr-4" />
+          <div>
+            <h4 className="text-lg font-bold">{testimonial.name}</h4>
+            <p className="text-sm text-gray-500">{testimonial.date}</p>
+          </div>
         </div>
-      </section>
+        <p className="mb-4 text-gray-700">{testimonial.review}</p>
+        <div className="flex">
+          {[...Array(testimonial.rating)].map((_, i) => (
+            <FaStar key={i} className="text-orange-500" />
+          ))}
+          {[...Array(5 - testimonial.rating)].map((_, i) => (
+            <FaStar key={i} className="text-gray-300" />
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* Contact Us Section */}
+
+<section className="mt-12 h-screen">
+  <h3 className="text-3xl font-bold text-center text-orange-500">Contact Us</h3>
+  <div className="container mx-auto flex flex-col lg:flex-row justify-center h-full">
+    <div className="flex-1 p-8">
+      <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
+      <form>
+        <div className="mb-4">
+          <label htmlFor="firstName" className="block font-bold">First Name</label>
+          <input type="text" id="firstName" name="firstName" className="border p-2 w-full" />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="lastName" className="block font-bold">Last Name</label>
+          <input type="text" id="lastName" name="lastName" className="border p-2 w-full" />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="phone" className="block font-bold">Phone</label>
+          <input type="text" id="phone" name="phone" className="border p-2 w-full" />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="email" className="block font-bold">Email</label>
+          <input type="email" id="email" name="email" className="border p-2 w-full" />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="message" className="block font-bold">Message</label>
+          <textarea id="message" name="message" className="border p-2 w-full h-32"></textarea>
+        </div>
+        <button type="submit" className="bg-orange-500 text-white py-2 px-4">Submit</button>
+      </form>
+    </div>
+    <div className="flex-1 p-8 flex flex-col items-center justify-center">
+      <img src="https://p1.hiclipart.com/preview/891/739/825/seafood-background-logo-line-character-beak-fish-orange-sa-wing-png-clipart.jpg" alt="Company Logo" className="w-32 h-32 mb-4" />
+      <h3 className="text-xl text-orange-500 font-bold mb-2">Bahari Bites</h3>
+      <p className="mb-2">Address: 123 GPO, Nairobi, Kenya</p>
+      <div className="flex items-center mb-2">
+        <FaPhone className="mr-2" /> +254 721 345 678
+      </div>
+      <div className="flex items-center">
+        <FaEnvelope className="mr-2" /> info@baharibites.com
+      </div>
+    </div>
+  </div>
+</section>
+
+
     </div>
   );
 };
