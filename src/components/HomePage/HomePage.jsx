@@ -101,7 +101,7 @@ const HomePage = () => {
 
 {/* How to Order Section */}
 
-<section id='how-to-order' className="mt-12 h-screen">
+<section id='howtoorder' className="mt-12 h-screen">
   <h3 className="text-3xl font-bold text-center text-orange-500">Order In Four Simple Steps</h3>
   <div className="mt-8 max-w-4xl mx-auto">
     <div className="mb-8 flex items-center">
@@ -215,7 +215,7 @@ const HomePage = () => {
 
 {/* Contact Us Section */}
 
-<section id='contact-us' className="mt-12 h-screen">
+<section id='contact' className="mt-12 h-screen">
   <h3 className="text-3xl font-bold text-center text-orange-500">Contact Us</h3>
   <div className="container mx-auto flex flex-col lg:flex-row justify-center h-full">
     <div className="flex-1 p-8">
