@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link as ScrollLink } from 'react-scroll';
+import { NavLink } from 'react-router-dom';
 import { FaShoppingCart, FaUser, FaHome, FaUtensils, FaInfoCircle, FaPhone, FaReceipt } from 'react-icons/fa';
 import { TbShoppingCartQuestion } from "react-icons/tb";
 
@@ -22,64 +22,64 @@ const Navbar = () => {
       </div>
       <ul className="flex space-x-7 items-center">
         <li className={`hidden md:inline text-lg font-bold cursor-pointer ${activeSection === 'home' ? 'text-orange-500' : 'text-black hover:text-orange-500'}`}>
-          <ScrollLink to="home" spy={true} smooth={true} offset={-70} duration={500} onSetActive={handleSetActive}>
+          <NavLink to="/" activeClassName="text-orange-500" onClick={() => handleSetActive('home')}>
             Home
-          </ScrollLink>
+          </NavLink>
         </li>
         <li className={`hidden md:inline text-lg font-bold cursor-pointer ${activeSection === 'menu' ? 'text-orange-500' : 'text-black hover:text-orange-500'}`}>
-          <ScrollLink to="menu" spy={true} smooth={true} offset={-70} duration={500} onSetActive={handleSetActive}>
+          <NavLink to="/menu" activeClassName="text-orange-500" onClick={() => handleSetActive('menu')}>
             Menu
-          </ScrollLink>
+          </NavLink>
         </li>
         <li className={`hidden md:inline text-lg font-bold cursor-pointer ${activeSection === 'howtoorder' ? 'text-orange-500' : 'text-black hover:text-orange-500'}`}>
-          <ScrollLink to="howtoorder" spy={true} smooth={true} offset={-70} duration={500} onSetActive={handleSetActive}>
+          <NavLink to="/howtoorder" activeClassName="text-orange-500" onClick={() => handleSetActive('howtoorder')}>
             How to Order
-          </ScrollLink>
+          </NavLink>
         </li>
         <li className={`hidden md:inline text-lg font-bold cursor-pointer ${activeSection === 'about' ? 'text-orange-500' : 'text-black hover:text-orange-500'}`}>
-          <ScrollLink to="about" spy={true} smooth={true} offset={-70} duration={500} onSetActive={handleSetActive}>
+          <NavLink to="/about" activeClassName="text-orange-500" onClick={() => handleSetActive('about')}>
             About Us
-          </ScrollLink>
+          </NavLink>
         </li>
         <li className={`hidden md:inline text-lg font-bold cursor-pointer ${activeSection === 'testimonials' ? 'text-orange-500' : 'text-black hover:text-orange-500'}`}>
-          <ScrollLink to="testimonials" spy={true} smooth={true} offset={-70} duration={500} onSetActive={handleSetActive}>
+          <NavLink to="/testimonials" activeClassName="text-orange-500" onClick={() => handleSetActive('testimonials')}>
             Testimonials
-          </ScrollLink>
+          </NavLink>
         </li>
         <li className={`hidden md:inline text-lg font-bold cursor-pointer ${activeSection === 'contact' ? 'text-orange-500' : 'text-black hover:text-orange-500'}`}>
-          <ScrollLink to="contact" spy={true} smooth={true} offset={-70} duration={500} onSetActive={handleSetActive}>
+          <NavLink to="/contact" activeClassName="text-orange-500" onClick={() => handleSetActive('contact')}>
             Contact Us
-          </ScrollLink>
+          </NavLink>
         </li>
         <li className="md:hidden">
-          <ScrollLink to="home" spy={true} smooth={true} offset={-70} duration={500} onSetActive={handleSetActive}>
+          <NavLink to="/" activeClassName="text-orange-500" onClick={() => handleSetActive('home')}>
             <FaHome className={`text-black ${activeSection === 'home' ? 'text-orange-500' : 'hover:text-orange-500'}`} size={20} />
-          </ScrollLink>
+          </NavLink>
         </li>
         <li className="md:hidden">
-          <ScrollLink to="menu" spy={true} smooth={true} offset={-70} duration={500} onSetActive={handleSetActive}>
+          <NavLink to="/menu" activeClassName="text-orange-500" onClick={() => handleSetActive('menu')}>
             <FaUtensils className={`text-black ${activeSection === 'menu' ? 'text-orange-500' : 'hover:text-orange-500'}`} size={20} />
-          </ScrollLink>
+          </NavLink>
         </li>
         <li className="md:hidden">
-          <ScrollLink to="howtoorder" spy={true} smooth={true} offset={-70} duration={500} onSetActive={handleSetActive}>
+          <NavLink to="/howtoorder" activeClassName="text-orange-500" onClick={() => handleSetActive('howtoorder')}>
             <TbShoppingCartQuestion className={`text-black ${activeSection === 'howtoorder' ? 'text-orange-500' : 'hover:text-orange-500'}`} size={20} />
-          </ScrollLink>
+          </NavLink>
         </li>
         <li className="md:hidden">
-          <ScrollLink to="about" spy={true} smooth={true} offset={-70} duration={500} onSetActive={handleSetActive}>
+          <NavLink to="/about" activeClassName="text-orange-500" onClick={() => handleSetActive('about')}>
             <FaInfoCircle className={`text-black ${activeSection === 'about' ? 'text-orange-500' : 'hover:text-orange-500'}`} size={20} />
-          </ScrollLink>
+          </NavLink>
         </li>
         <li className="md:hidden">
-          <ScrollLink to="testimonials" spy={true} smooth={true} offset={-70} duration={500} onSetActive={handleSetActive}>
+          <NavLink to="/testimonials" activeClassName="text-orange-500" onClick={() => handleSetActive('testimonials')}>
             <FaReceipt className={`text-black ${activeSection === 'testimonials' ? 'text-orange-500' : 'hover:text-orange-500'}`} size={20} />
-          </ScrollLink>
+          </NavLink>
         </li>
         <li className="md:hidden">
-          <ScrollLink to="contact" spy={true} smooth={true} offset={-70} duration={500} onSetActive={handleSetActive}>
+          <NavLink to="/contact" activeClassName="text-orange-500" onClick={() => handleSetActive('contact')}>
             <FaPhone className={`text-black ${activeSection === 'contact' ? 'text-orange-500' : 'hover:text-orange-500'}`} size={20} />
-          </ScrollLink>
+          </NavLink>
         </li>
       </ul>
       <div className="flex space-x-6">
