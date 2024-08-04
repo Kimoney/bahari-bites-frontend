@@ -2,7 +2,7 @@ import {  FaUtensils, FaShoppingCart, FaCreditCard, FaTruck } from 'react-icons/
 
 export default function HowToOrder() {
   return (
-<div id='howtoorder' className="mt-12 h-screen">
+<div id='howtoorder' className="mt-12 h-screen pt-20">
   <h3 className="text-3xl font-bold text-center text-orange-500">Order In Four Simple Steps</h3>
   <div className="mt-8 max-w-4xl mx-auto">
     <div className="mb-8 flex items-center">

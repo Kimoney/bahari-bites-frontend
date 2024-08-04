@@ -6,7 +6,7 @@ const HomePage = () => {
   return (
     <div className="p-8">
       {/* Intro Section */}
-      <section id='home' className="grid grid-cols-6 gap-4 h-screen">
+      <section id='home' className="grid grid-cols-6 gap-4 h-screen pt-20">
         <div className="col-span-6 md:col-span-3 flex flex-col justify-center items-center">
           <div className="text-left mb-8">
             <h2 className="text-5xl font-bold py-4">Unleash</h2>

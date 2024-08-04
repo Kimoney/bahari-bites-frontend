@@ -2,7 +2,7 @@ import { FaPhone, FaEnvelope } from 'react-icons/fa';
 
 export default function ContactUs() {
   return (
-<div className="mt-12 h-screen">
+<div className="mt-12 h-screen pt-20">
   <h3 className="text-3xl font-bold text-center text-orange-500">Contact Us</h3>
   <div className="container mx-auto flex flex-col lg:flex-row justify-center h-full">
     <div className="flex-1 p-8">

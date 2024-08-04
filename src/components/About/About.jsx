@@ -2,7 +2,7 @@ import {  FaHistory, FaBullseye, FaHeart, FaConciergeBell } from 'react-icons/fa
 
 export default function About() {
   return (
-<div className="mt-12 h-screen">
+<div className="mt-12 h-screen pt-20">
   <h3 className="text-3xl font-bold text-center">Who is <span className='text-orange-500'>Bahari Bites</span></h3>
   <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
     <div className="col-span-1 md:col-span-1 flex justify-center items-center">
