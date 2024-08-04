@@ -13,6 +13,7 @@ const App = () => {
     <Router>
       <div className="flex flex-col min-h-screen">
         <Navbar />
+        <div className='flex-grow'>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/menu" element={<Menu />} />
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/contact" element={<ContactUs />} />
         </Routes>
+        </div>
         <Footer />
       </div>
     </Router>
