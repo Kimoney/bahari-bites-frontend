@@ -112,7 +112,7 @@ const Menu = () => {
   };
 
   return (
-    <div className="flex pt-20">
+    <div className="flex pt-32">
       {/* Sidebar for Filter and Sort */}
       <div className="w-1/5 p-4">
         <h2 className="text-xl font-bold text-orange-500 mb-4">Filter & Sort</h2>

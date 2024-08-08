@@ -1,7 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Filter = ({ onFilter }) => {
   const [category, setCategory] = useState('');
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:5000/api/menu');
+        const data = await response.json();
+        const uniqueCategories = [...new Set(data.map(item => item.category))];
+        setCategories(uniqueCategories);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   const handleFilterChange = (e) => {
     setCategory(e.target.value);
@@ -18,13 +34,9 @@ const Filter = ({ onFilter }) => {
         className="block w-full p-2 border border-gray-300 rounded"
       >
         <option value="">All</option>
-        <option value="lobster">Lobster</option>
-        <option value="redsnapper">Red Snapper</option>
-        <option value="whitesnapper">White Snapper</option>
-        <option value="prawns">Prawns</option>
-        <option value="crab">Crab</option>
-        <option value="octopus">Octopus</option>
-        <option value="platter">Platter</option>
+        {categories.map((cat, index) => (
+          <option key={index} value={cat}>{cat}</option>
+        ))}
       </select>
     </div>
   );
