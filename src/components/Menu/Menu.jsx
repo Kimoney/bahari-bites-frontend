@@ -5,11 +5,9 @@ import { FiHeart, FiStar, FiPlus, FiMinus } from 'react-icons/fi';
 import CONFIG from '../../../config';
 
 const Menu = () => {
-
   const [menuItems, setMenuItems] = useState([]);
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState('');
-
   const [filteredItems, setFilteredItems] = useState(menuItems);
   const [sortOption, setSortOption] = useState('');
   const [cartQuantities, setCartQuantities] = useState({});
@@ -22,24 +20,16 @@ const Menu = () => {
         setMenuItems(data);
         const uniqueCategories = [...new Set(data.map(item => item.category))];
         setCategories(uniqueCategories);
-
       } catch (error) {
         console.error('Error fetching menu items:', error);
       }
     };
-
     fetchMenuItems();
-    console.log(menuItems);
-    console.log(filteredItems);
-    console.log(categories)
-    console.log("three up in useffect")
   }, []);
 
-  // Use Effect to update the the Filtered items when the menu items are updated
   useEffect(() => {
-    setFilteredItems(menuItems)
+    setFilteredItems(menuItems);
   }, [menuItems]);
-  
 
   const handleFilter = (category) => {
     let filtered = menuItems;
@@ -65,14 +55,21 @@ const Menu = () => {
   const handleIncrement = (id) => {
     setCartQuantities(prevQuantities => ({
       ...prevQuantities,
-      [id]: (prevQuantities[id] || 0) + 1
+      [id]: (prevQuantities[id] || 1) + 1
     }));
   };
 
   const handleDecrement = (id) => {
     setCartQuantities(prevQuantities => ({
       ...prevQuantities,
-      [id]: (prevQuantities[id] > 0 ? prevQuantities[id] - 1 : 0)
+      [id]: (prevQuantities[id] > 1 ? prevQuantities[id] - 1 : 1)
+    }));
+  };
+
+  const handleAddToCart = (id) => {
+    setCartQuantities(prevQuantities => ({
+      ...prevQuantities,
+      [id]: prevQuantities[id] || 1
     }));
   };
 
@@ -98,23 +95,40 @@ const Menu = () => {
                   <a className="line-clamp-1 text-xl font-semibold text-default-800 after:absolute after:inset-0" href={`http://localhost:5173/menu/${item.id}`}>{item.name}</a>
                   <button type="button" ><FiHeart className="relative z-10 cursor-pointer transition-all hover:fill-red-500 hover:text-red-500" /></button>
                 </div>
-                <span className="mb-4 inline-flex items-center gap-2">
-                  <span className="rounded-full bg-orange-500 p-1">
-                    <FiStar className="fill-white text-white" />
-                  </span>
-                  <span className="text-sm text-default-950">{item.rating}</span>
-                </span>
+                
                 <div className="mb-4 flex items-end justify-between">
                   <h4 className="text-2xl font-semibold leading-9 text-default-900">KES {item.price}</h4>
-                  <div className="flex items-center gap-2">
-                    <button type="button" onClick={() => handleDecrement(item.id)}><FiMinus className="text-orange-500 cursor-pointer" /></button>
-                    <span>{cartQuantities[item.id] || 1}</span>
-                    <button type="button" onClick={() => handleIncrement(item.id)}><FiPlus className="text-orange-500 cursor-pointer" /></button>
-                  </div>
+                  <span className="mb-4 inline-flex items-center gap-2">
+                    <span className="rounded-full bg-orange-500 p-1">
+                      <FiStar className="fill-white text-white" />
+                    </span>
+                    <span className="text-sm text-default-950">{item.rating}</span>
+                  </span>
                 </div>
-                <button className="relative z-10 inline-flex w-full items-center justify-center rounded-lg bg-orange-500 px-6 py-3 text-center text-sm font-medium text-white shadow-sm transition-all duration-300 hover:bg-orange-600">
-                  Add to Cart
-                </button>
+                
+                <div className="flex items-center gap-2">
+                  {cartQuantities[item.id] ? (
+                    <>
+                    <div className="relative z-10 inline-flex w-full items-center justify-center rounded-lg px-6 py-3 text-center text-sm font-medium shadow-sm space-x-10">
+                      <button type="button" onClick={() => handleDecrement(item.id)} className="rounded-lg bg-orange-500 px-6 py-3 text-center text-sm font-medium text-white shadow-sm transition-all duration-300 hover:bg-orange-600">
+                        <FiMinus className="text-white cursor-pointer" />
+                      </button>
+                      <span>{cartQuantities[item.id]}</span>
+                      <button type="button" onClick={() => handleIncrement(item.id)} className="rounded-lg bg-orange-500 px-6 py-3 text-center text-sm font-medium text-white shadow-sm transition-all duration-300 hover:bg-orange-600">
+                        <FiPlus className="text-white cursor-pointer" />
+                      </button>
+                      </div>
+                    </>
+
+                  ) : (
+                    <button
+                      className="relative z-10 inline-flex w-full items-center justify-center rounded-lg bg-orange-500 px-6 py-3 text-center text-sm font-medium text-white shadow-sm transition-all duration-300 hover:bg-orange-600"
+                      onClick={() => handleAddToCart(item.id)}
+                    >
+                      Add to Cart
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           </div>
