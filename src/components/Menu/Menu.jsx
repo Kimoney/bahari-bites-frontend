@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Filter from '../Filter/Filter';
 import Sort from '../Sort/Sort';
+import { useCart } from '../../context/CartContext';
 import { FiHeart, FiStar, FiPlus, FiMinus } from 'react-icons/fi';
 import CONFIG from '../../../config';
 
@@ -10,7 +11,8 @@ const Menu = () => {
   const [category, setCategory] = useState('');
   const [filteredItems, setFilteredItems] = useState(menuItems);
   const [sortOption, setSortOption] = useState('');
-  const [cartQuantities, setCartQuantities] = useState({});
+
+  const { cart, addToCart, updateQuantity } = useCart();
 
   useEffect(() => {
     const fetchMenuItems = async () => {
@@ -53,36 +55,38 @@ const Menu = () => {
   };
 
   const handleIncrement = (id) => {
-    setCartQuantities(prevQuantities => ({
-      ...prevQuantities,
-      [id]: (prevQuantities[id] || 1) + 1
-    }));
+    updateQuantity(id, (cart.find(item => item.id === id)?.quantity || 0) + 1);
   };
 
   const handleDecrement = (id) => {
-    setCartQuantities(prevQuantities => ({
-      ...prevQuantities,
-      [id]: (prevQuantities[id] > 1 ? prevQuantities[id] - 1 : 1)
-    }));
+    const currentQuantity = cart.find(item => item.id === id)?.quantity || 1;
+    if (currentQuantity > 1) {
+      updateQuantity(id, currentQuantity - 1);
+    }
   };
 
-  const handleAddToCart = (id) => {
-    setCartQuantities(prevQuantities => ({
-      ...prevQuantities,
-      [id]: prevQuantities[id] || 1
-    }));
+  const handleAddToCart = (item) => {
+    addToCart(item);
   };
+
+  // Compute cart quantities
+  const cartQuantities = cart.reduce((acc, item) => {
+    console.log('first compute cart quantity')
+    console.log(cart)
+    acc[item.id] = item.quantity;
+    return acc;
+  }, {});
+
+  console.log(cart)
 
   return (
     <div className="flex pt-32">
-      {/* Sidebar for Filter and Sort */}
       <div className="w-1/5 p-4">
         <h2 className="text-xl font-bold text-orange-500 mb-4">Filter & Sort</h2>
         <Filter onFilter={handleFilter} category={category} setCategory={setCategory} categories={categories} />
         <Sort onSort={handleSort} />
       </div>
 
-      {/* Menu Items */}
       <div className="w-4/5 p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredItems.map(item => (
           <div key={item.id} className="overflow-hidden rounded-lg border border-default-200 p-12 transition-all duration-300 hover:border-primary hover:shadow-xl">
@@ -93,7 +97,7 @@ const Menu = () => {
               <div className="pt-2">
                 <div className="mb-4 flex items-center justify-between">
                   <a className="line-clamp-1 text-xl font-semibold text-default-800 after:absolute after:inset-0" href={`http://localhost:5173/menu/${item.id}`}>{item.name}</a>
-                  <button type="button" ><FiHeart className="relative z-10 cursor-pointer transition-all hover:fill-red-500 hover:text-red-500" /></button>
+                  <button type="button"><FiHeart className="relative z-10 cursor-pointer transition-all hover:fill-red-500 hover:text-red-500" /></button>
                 </div>
                 
                 <div className="mb-4 flex items-end justify-between">
@@ -119,21 +123,22 @@ const Menu = () => {
                       </button>
                       </div>
                     </>
-
                   ) : (
                     <button
                       className="relative z-10 inline-flex w-full items-center justify-center rounded-lg bg-orange-500 px-6 py-3 text-center text-sm font-medium text-white shadow-sm transition-all duration-300 hover:bg-orange-600"
-                      onClick={() => handleAddToCart(item.id)}
+                      onClick={() => handleAddToCart(item)}
                     >
                       Add to Cart
                     </button>
                   )}
                 </div>
+
               </div>
             </div>
           </div>
         ))}
       </div>
+
     </div>
   );
 };

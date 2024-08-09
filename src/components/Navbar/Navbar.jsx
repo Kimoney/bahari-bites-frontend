@@ -29,6 +29,9 @@ const Navbar = () => {
       case '/contact':
         setActiveSection('contact');
         break;
+      case '/cart':
+        setActiveSection('cart');
+        break;
       default:
         setActiveSection('');
     }
@@ -107,7 +110,9 @@ const Navbar = () => {
         </li>
       </ul>
       <div className="flex space-x-6">
-        <FaShoppingCart className="text-black hover:text-orange-500 cursor-pointer" size={20} />
+        <NavLink to="/cart" onClick={() => setActiveSection('cart')}>
+        <FaShoppingCart className={`text-black ${activeSection === 'cart' ? 'text-orange-500' : 'hover:text-orange-500'}`} size={20} />
+        </NavLink>
         <FaUser className="text-black hover:text-orange-500 cursor-pointer" size={20} />
       </div>
     </nav>

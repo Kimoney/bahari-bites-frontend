@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { CartProvider } from './context/CartContext';
 import Navbar from './components/Navbar/Navbar';
 import HomePage from './components/HomePage/HomePage';
 import Menu from './components/Menu/Menu';
@@ -7,9 +8,11 @@ import About from './components/About/About';
 import Testimonials from './components/Testimonials/Testimonials';
 import ContactUs from './components/ContactUs/ContactUs';
 import Footer from './components/Footer/Footer';
+import Cart from './components/Cart/Cart';
 
 const App = () => {
   return (
+    <CartProvider>
     <Router>
       <div className="flex flex-col min-h-screen">
         <Navbar />
@@ -21,11 +24,13 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
         </div>
         <Footer />
       </div>
     </Router>
+    </CartProvider>
   );
 };
 
