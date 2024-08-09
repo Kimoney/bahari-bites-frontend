@@ -1,14 +1,38 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { FaShoppingCart, FaUser, FaHome, FaUtensils, FaInfoCircle, FaPhone, FaReceipt } from 'react-icons/fa';
 import { TbShoppingCartQuestion } from "react-icons/tb";
 
 const Navbar = () => {
-  const [activeSection, setActiveSection] = useState('home');
+  const location = useLocation();
+  const [activeSection, setActiveSection] = useState('');
 
-  const handleSetActive = (to) => {
-    setActiveSection(to);
-  };
+  useEffect(() => {
+    // Set active section based on current URL path
+    const path = location.pathname;
+    switch (path) {
+      case '/':
+        setActiveSection('home');
+        break;
+      case '/menu':
+        setActiveSection('menu');
+        break;
+      case '/howtoorder':
+        setActiveSection('howtoorder');
+        break;
+      case '/about':
+        setActiveSection('about');
+        break;
+      case '/testimonials':
+        setActiveSection('testimonials');
+        break;
+      case '/contact':
+        setActiveSection('contact');
+        break;
+      default:
+        setActiveSection('');
+    }
+  }, [location]);
 
   return (
     <nav className="bg-white p-4 shadow-md fixed w-full z-50 flex justify-between items-center">
@@ -22,62 +46,62 @@ const Navbar = () => {
       </div>
       <ul className="flex space-x-7 items-center">
         <li className={`hidden md:inline text-lg font-bold cursor-pointer ${activeSection === 'home' ? 'text-orange-500' : 'text-black hover:text-orange-500'}`}>
-          <NavLink to="/" activeClassName="text-orange-500" onClick={() => handleSetActive('home')}>
+          <NavLink to="/" onClick={() => setActiveSection('home')}>
             Home
           </NavLink>
         </li>
         <li className={`hidden md:inline text-lg font-bold cursor-pointer ${activeSection === 'menu' ? 'text-orange-500' : 'text-black hover:text-orange-500'}`}>
-          <NavLink to="/menu" activeClassName="text-orange-500" onClick={() => handleSetActive('menu')}>
+          <NavLink to="/menu" onClick={() => setActiveSection('menu')}>
             Menu
           </NavLink>
         </li>
         <li className={`hidden md:inline text-lg font-bold cursor-pointer ${activeSection === 'howtoorder' ? 'text-orange-500' : 'text-black hover:text-orange-500'}`}>
-          <NavLink to="/howtoorder" activeClassName="text-orange-500" onClick={() => handleSetActive('howtoorder')}>
+          <NavLink to="/howtoorder" onClick={() => setActiveSection('howtoorder')}>
             How to Order
           </NavLink>
         </li>
         <li className={`hidden md:inline text-lg font-bold cursor-pointer ${activeSection === 'about' ? 'text-orange-500' : 'text-black hover:text-orange-500'}`}>
-          <NavLink to="/about" activeClassName="text-orange-500" onClick={() => handleSetActive('about')}>
+          <NavLink to="/about" onClick={() => setActiveSection('about')}>
             About Us
           </NavLink>
         </li>
         <li className={`hidden md:inline text-lg font-bold cursor-pointer ${activeSection === 'testimonials' ? 'text-orange-500' : 'text-black hover:text-orange-500'}`}>
-          <NavLink to="/testimonials" activeClassName="text-orange-500" onClick={() => handleSetActive('testimonials')}>
+          <NavLink to="/testimonials" onClick={() => setActiveSection('testimonials')}>
             Testimonials
           </NavLink>
         </li>
         <li className={`hidden md:inline text-lg font-bold cursor-pointer ${activeSection === 'contact' ? 'text-orange-500' : 'text-black hover:text-orange-500'}`}>
-          <NavLink to="/contact" activeClassName="text-orange-500" onClick={() => handleSetActive('contact')}>
+          <NavLink to="/contact" onClick={() => setActiveSection('contact')}>
             Contact Us
           </NavLink>
         </li>
         <li className="md:hidden">
-          <NavLink to="/" activeClassName="text-orange-500" onClick={() => handleSetActive('home')}>
+          <NavLink to="/" onClick={() => setActiveSection('home')}>
             <FaHome className={`text-black ${activeSection === 'home' ? 'text-orange-500' : 'hover:text-orange-500'}`} size={20} />
           </NavLink>
         </li>
         <li className="md:hidden">
-          <NavLink to="/menu" activeClassName="text-orange-500" onClick={() => handleSetActive('menu')}>
+          <NavLink to="/menu" onClick={() => setActiveSection('menu')}>
             <FaUtensils className={`text-black ${activeSection === 'menu' ? 'text-orange-500' : 'hover:text-orange-500'}`} size={20} />
           </NavLink>
         </li>
         <li className="md:hidden">
-          <NavLink to="/howtoorder" activeClassName="text-orange-500" onClick={() => handleSetActive('howtoorder')}>
+          <NavLink to="/howtoorder" onClick={() => setActiveSection('howtoorder')}>
             <TbShoppingCartQuestion className={`text-black ${activeSection === 'howtoorder' ? 'text-orange-500' : 'hover:text-orange-500'}`} size={20} />
           </NavLink>
         </li>
         <li className="md:hidden">
-          <NavLink to="/about" activeClassName="text-orange-500" onClick={() => handleSetActive('about')}>
+          <NavLink to="/about" onClick={() => setActiveSection('about')}>
             <FaInfoCircle className={`text-black ${activeSection === 'about' ? 'text-orange-500' : 'hover:text-orange-500'}`} size={20} />
           </NavLink>
         </li>
         <li className="md:hidden">
-          <NavLink to="/testimonials" activeClassName="text-orange-500" onClick={() => handleSetActive('testimonials')}>
+          <NavLink to="/testimonials" onClick={() => setActiveSection('testimonials')}>
             <FaReceipt className={`text-black ${activeSection === 'testimonials' ? 'text-orange-500' : 'hover:text-orange-500'}`} size={20} />
           </NavLink>
         </li>
         <li className="md:hidden">
-          <NavLink to="/contact" activeClassName="text-orange-500" onClick={() => handleSetActive('contact')}>
+          <NavLink to="/contact" onClick={() => setActiveSection('contact')}>
             <FaPhone className={`text-black ${activeSection === 'contact' ? 'text-orange-500' : 'hover:text-orange-500'}`} size={20} />
           </NavLink>
         </li>
