@@ -1,23 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-const Filter = ({ onFilter }) => {
-  const [category, setCategory] = useState('');
-  const [categories, setCategories] = useState([]);
+const Filter = ({ onFilter, category, setCategory, categories }) => {
 
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const response = await fetch('http://127.0.0.1:5000/api/menu');
-        const data = await response.json();
-        const uniqueCategories = [...new Set(data.map(item => item.category))];
-        setCategories(uniqueCategories);
-      } catch (error) {
-        console.error('Error fetching categories:', error);
-      }
-    };
-
-    fetchCategories();
-  }, []);
 
   const handleFilterChange = (e) => {
     setCategory(e.target.value);
