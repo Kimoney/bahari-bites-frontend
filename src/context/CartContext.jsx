@@ -12,19 +12,16 @@ export const useCart = () => {
 
 export const CartProvider = ({ children }) => {
 
-    const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    const savedCart = JSON.parse(localStorage.getItem('cart')) || []; // Store the saved cart data in localStorage
+    
+    const [cart, setCart] = useState(savedCart); // Use the saved cart state to set the cart data
 
-  const [cart, setCart] = useState(savedCart);
-
-useEffect(() => {
-//   const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
-  console.log('Loaded cart from localStorage:', savedCart); // Debugging
-  setCart(savedCart);
+useEffect(() => {     
+  setCart(savedCart); // Load cart data from localStorage:
 }, []);
 
 useEffect(() => {
-  console.log('Saving cart to localStorage:', cart); // Debugging
-  localStorage.setItem('cart', JSON.stringify(cart));
+  localStorage.setItem('cart', JSON.stringify(cart)); // Save cart data to localStorage:
 }, [cart]);
 
 
