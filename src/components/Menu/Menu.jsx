@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Filter from '../Filter/Filter';
 import Sort from '../Sort/Sort';
 import { FiHeart, FiStar, FiPlus, FiMinus } from 'react-icons/fi';
+import CONFIG from '../../../config';
 
 const Menu = () => {
 
@@ -16,7 +17,7 @@ const Menu = () => {
   useEffect(() => {
     const fetchMenuItems = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:5000/api/menu');
+        const response = await fetch(`${CONFIG.API_BASE_URL}/menu`);
         const data = await response.json();
         setMenuItems(data);
         const uniqueCategories = [...new Set(data.map(item => item.category))];
@@ -95,7 +96,7 @@ const Menu = () => {
               <div className="pt-2">
                 <div className="mb-4 flex items-center justify-between">
                   <a className="line-clamp-1 text-xl font-semibold text-default-800 after:absolute after:inset-0" href={`http://localhost:5173/menu/${item.id}`}>{item.name}</a>
-                  <button><FiHeart className="relative z-10 cursor-pointer transition-all hover:fill-red-500 hover:text-red-500" /></button>
+                  <button type="button" ><FiHeart className="relative z-10 cursor-pointer transition-all hover:fill-red-500 hover:text-red-500" /></button>
                 </div>
                 <span className="mb-4 inline-flex items-center gap-2">
                   <span className="rounded-full bg-orange-500 p-1">
@@ -106,9 +107,9 @@ const Menu = () => {
                 <div className="mb-4 flex items-end justify-between">
                   <h4 className="text-2xl font-semibold leading-9 text-default-900">KES {item.price}</h4>
                   <div className="flex items-center gap-2">
-                    <button onClick={() => handleDecrement(item.id)}><FiMinus className="text-orange-500 cursor-pointer" /></button>
+                    <button type="button" onClick={() => handleDecrement(item.id)}><FiMinus className="text-orange-500 cursor-pointer" /></button>
                     <span>{cartQuantities[item.id] || 1}</span>
-                    <button onClick={() => handleIncrement(item.id)}><FiPlus className="text-orange-500 cursor-pointer" /></button>
+                    <button type="button" onClick={() => handleIncrement(item.id)}><FiPlus className="text-orange-500 cursor-pointer" /></button>
                   </div>
                 </div>
                 <button className="relative z-10 inline-flex w-full items-center justify-center rounded-lg bg-orange-500 px-6 py-3 text-center text-sm font-medium text-white shadow-sm transition-all duration-300 hover:bg-orange-600">
