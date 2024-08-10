@@ -117,7 +117,7 @@ const Menu = () => {
                       <button type="button" onClick={() => handleDecrement(item.id)} className="text-orange-500 text-lg p-2 cursor-pointer">
                         <FiMinus />
                       </button>
-                      <span>{cartQuantities[item.id]}</span>
+                      <span className="text-xl font-extrabold">{cartQuantities[item.id]}</span>
                       <button type="button" onClick={() => handleIncrement(item.id)}
                             className="text-orange-500 text-lg p-2 cursor-pointer">
                         <FiPlus/>
