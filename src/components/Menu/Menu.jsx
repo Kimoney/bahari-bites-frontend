@@ -87,9 +87,9 @@ const Menu = () => {
         <Sort onSort={handleSort} />
       </div>
 
-      <div className="w-4/5 p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="w-4/5 p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {filteredItems.map(item => (
-          <div key={item.id} className="overflow-hidden rounded-lg border border-default-200 p-12 transition-all duration-300 hover:border-primary hover:shadow-xl">
+          <div key={item.id} className="overflow-hidden rounded-lg border border-default-200 p-2 transition-all duration-300 hover:border-primary hover:shadow-xl">
             <div className="group relative divide-y divide-default-200 overflow-hidden rounded-lg">
               <div className="mx-auto mb-4 h-48">
                 <img src={item.image_url} alt={item.name} className="h-full w-full object-cover transition-all group-hover:scale-105" />
@@ -113,11 +113,11 @@ const Menu = () => {
                 <div className="flex items-center gap-2">
                   {cartQuantities[item.id] ? (
                     <>
-                    <div className="relative z-10 inline-flex w-full items-center justify-center rounded-lg px-6 py-3 text-center text-sm font-medium shadow-sm space-x-10">
+                    <div className="relative z-10 inline-flex w-full items-center justify-center rounded-lg px-6 py-3 text-center text-sm font-medium shadow-sm space-x-4">
                       <button type="button" onClick={() => handleDecrement(item.id)} className="text-orange-500 text-lg p-2 cursor-pointer">
                         <FiMinus />
                       </button>
-                      <span className="text-xl font-extrabold">{cartQuantities[item.id]}</span>
+                      <span className="text-lg font-bold">{cartQuantities[item.id]}</span>
                       <button type="button" onClick={() => handleIncrement(item.id)}
                             className="text-orange-500 text-lg p-2 cursor-pointer">
                         <FiPlus/>
