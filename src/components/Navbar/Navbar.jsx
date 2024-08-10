@@ -2,8 +2,17 @@ import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { FaShoppingCart, FaUser, FaHome, FaUtensils, FaInfoCircle, FaPhone, FaReceipt } from 'react-icons/fa';
 import { TbShoppingCartQuestion } from "react-icons/tb";
+import { useCart } from '../../context/CartContext';
+
 
 const Navbar = () => {
+
+  const { cart } = useCart();
+  // Calculate total items in cart
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+  const totalUniqueItems = cart.length;
+
+
   const location = useLocation();
   const [activeSection, setActiveSection] = useState('');
 
@@ -109,12 +118,22 @@ const Navbar = () => {
           </NavLink>
         </li>
       </ul>
-      <div className="flex space-x-6">
+      <div className="flex space-x-6 relative">
         <NavLink to="/cart" onClick={() => setActiveSection('cart')}>
-        <FaShoppingCart className={`text-black ${activeSection === 'cart' ? 'text-orange-500' : 'hover:text-orange-500'}`} size={20} />
-        </NavLink>
-        <FaUser className="text-black hover:text-orange-500 cursor-pointer" size={20} />
-      </div>
+          <div className="relative">
+            <FaShoppingCart 
+                className={`text-black ${activeSection === 'cart' ? 'text-orange-500' : 'hover:text-orange-800'}`} 
+                size={20} 
+              />
+          {totalItems > 0 && (
+            <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+              {totalItems}
+            </span>
+          )}
+        </div>
+      </NavLink>
+      <FaUser className="text-black hover:text-orange-500 cursor-pointer" size={20} />
+    </div>
     </nav>
   );
 };
