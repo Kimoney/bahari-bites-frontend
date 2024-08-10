@@ -9,6 +9,17 @@ const Cart = () => {
 
   const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
+  const handleIncrement = (id) => {
+    updateQuantity(id, (cart.find(item => item.id === id)?.quantity || 0) + 1);
+  };
+
+  const handleDecrement = (id) => {
+    const currentQuantity = cart.find(item => item.id === id)?.quantity || 1;
+    if (currentQuantity > 1) {
+      updateQuantity(id, currentQuantity - 1);
+    }
+  };
+
   return (
     <div className="flex flex-col lg:flex-row pt-20 justify-center gap-8 px-4 lg:px-16 mt-8">
       <div className="w-full lg:w-8/12">
@@ -51,14 +62,14 @@ const Cart = () => {
                     <td className="py-4 px-4">
                       <div className="flex items-center gap-2">
                         <button 
-                          onClick={() => updateQuantity(item.id, item.quantity - 1)} 
+                          onClick={() => handleDecrement(item.id)} 
                           className="text-orange-500 text-lg p-2"
                         >
                           <FiMinus />
                         </button>
                         <span>{item.quantity}</span>
                         <button 
-                          onClick={() => updateQuantity(item.id, item.quantity + 1)} 
+                          onClick={() => handleIncrement(item.id)} 
                           className="text-orange-500 text-lg p-2"
                         >
                           <FiPlus />
