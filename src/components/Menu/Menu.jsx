@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Filter from '../Filter/Filter';
 import Sort from '../Sort/Sort';
 import { useCart } from '../../context/CartContext';
-import { FiHeart, FiStar, FiPlus, FiMinus } from 'react-icons/fi';
+import { FiHeart, FiStar, FiPlus, FiMinus, FiTrash2 } from 'react-icons/fi';
 import CONFIG from '../../../config';
 
 const Menu = () => {
@@ -12,7 +12,7 @@ const Menu = () => {
   const [filteredItems, setFilteredItems] = useState(menuItems);
   const [sortOption, setSortOption] = useState('');
 
-  const { cart, addToCart, updateQuantity } = useCart();
+  const { cart, addToCart, updateQuantity, removeFromCart } = useCart();
 
   useEffect(() => {
     const fetchMenuItems = async () => {
@@ -114,13 +114,20 @@ const Menu = () => {
                   {cartQuantities[item.id] ? (
                     <>
                     <div className="relative z-10 inline-flex w-full items-center justify-center rounded-lg px-6 py-3 text-center text-sm font-medium shadow-sm space-x-10">
-                      <button type="button" onClick={() => handleDecrement(item.id)} className="rounded-lg bg-orange-500 px-6 py-3 text-center text-sm font-medium text-white shadow-sm transition-all duration-300 hover:bg-orange-600">
-                        <FiMinus className="text-white cursor-pointer" />
+                      <button type="button" onClick={() => handleDecrement(item.id)} className="text-orange-500 text-lg p-2 cursor-pointer">
+                        <FiMinus />
                       </button>
                       <span>{cartQuantities[item.id]}</span>
-                      <button type="button" onClick={() => handleIncrement(item.id)} className="rounded-lg bg-orange-500 px-6 py-3 text-center text-sm font-medium text-white shadow-sm transition-all duration-300 hover:bg-orange-600">
-                        <FiPlus className="text-white cursor-pointer" />
+                      <button type="button" onClick={() => handleIncrement(item.id)}
+                            className="text-orange-500 text-lg p-2 cursor-pointer">
+                        <FiPlus/>
                       </button>
+                      <button 
+                          onClick={() => removeFromCart(item.id)} 
+                          className="text-red-600 text-lg p-2 cursor-pointer"
+                        >
+                          <FiTrash2 />
+                        </button>
                       </div>
                     </>
                   ) : (
