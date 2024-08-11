@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import baharilogo from '../../assets/logo/baharilogo.png';
 
 export default function Login() {
     return (
@@ -7,11 +8,11 @@ export default function Login() {
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mt-12">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img
-              alt="Bahari Bites"
-              src="https://p1.hiclipart.com/preview/891/739/825/seafood-background-logo-line-character-beak-fish-orange-sa-wing-png-clipart.jpg"
-              className="mx-auto h-20 w-auto"
+              alt="Bahari Bites Logo"
+              src={baharilogo}
+              className="mx-auto h-60 w-auto"
             />
-            <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">
+            <h2 className="mt-4 text-center text-2xl font-bold leading-9 tracking-tight">
               Sign In To Your Account
             </h2>
           </div>
