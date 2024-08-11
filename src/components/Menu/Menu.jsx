@@ -80,14 +80,14 @@ const Menu = () => {
   console.log(cart)
 
   return (
-    <div className="flex pt-32">
+    <div className="flex pt-32 px-16">
       <div className="w-1/5 p-4">
         <h2 className="text-xl font-bold text-orange-500 mb-4">Filter & Sort</h2>
         <Filter onFilter={handleFilter} category={category} setCategory={setCategory} categories={categories} />
         <Sort onSort={handleSort} />
       </div>
 
-      <div className="w-4/5 p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="w-4/5 p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-6">
         {filteredItems.map(item => (
           <div key={item.id} className="overflow-hidden rounded-lg border p-2 transition-all duration-300 hover:border-orange-500 hover:shadow-xl">
             <div className="group relative divide-y divide-default-200 overflow-hidden rounded-lg">
