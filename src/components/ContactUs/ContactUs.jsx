@@ -73,7 +73,10 @@ export default function ContactUs() {
         <div className="flex-1 bg-white p-6 lg:p-8 rounded-lg shadow-lg">
           <img src={baharilogo} alt="Bahari Bites Logo" className="h-40 w-auto mb-4 mx-auto transform scale-125" />
           <h3 className="text-2xl text-orange-500 font-bold mb-6 text-center">Talk to us</h3>
-          <p className="text-gray-700 text-center mb-6">Address: 123 GPO, Nairobi, Kenya</p>
+          <div className="flex items-center text-gray-700 mb-6 justify-center">
+            <FaEnvelope className="text-orange-500 mr-2" size={20} />
+            <span>123 GPO, Nairobi, Kenya</span>
+          </div>
           <div className="flex items-center text-gray-700 mb-6 justify-center">
             <FaPhone className="text-orange-500 mr-2" size={20} />
             <span>+254 721 345 678</span>
