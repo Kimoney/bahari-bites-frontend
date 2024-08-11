@@ -8,8 +8,8 @@ const CheckoutSummary = () => {
 
     const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
   return (
-    <div className="grid grid-cols-6">
-    <div className="col-start-2 col-span-4">
+    <div className="grid lg:grid-cols-6">
+    <div className="lg:col-start-3 lg:col-span-2">
     <div className="border border-orange-500 rounded-lg shadow-sm p-4 mt-28">
       <div className="pb-4 mb-4">
         <h4 className="text-xl font-bold uppercase text-left">Order Summary</h4>
@@ -34,6 +34,9 @@ const CheckoutSummary = () => {
             PAY NOW KES {totalPrice.toFixed(2)}
           </button>
         </Link>
+      </div>
+      <div className="flex justify-between mt-5 mb-5 p-4">
+        <p className="text-xs ">By clicking 'PAY NOW' you agree to <span className="text-orange-500">Bahari Bites</span> terms and conditions. Please note: We wil never ask for your M-Pesa PIN, CVV or full card details over the phone or via e-mail. Need help? <span className="text-orange-500">Contact Us</span></p>
       </div>
     </div>
     </div>
