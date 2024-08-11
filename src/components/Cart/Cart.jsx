@@ -30,9 +30,9 @@ const Cart = () => {
               <p className="text-xl font-bold mb-4">Your cart is empty</p>
               <Link 
                 to="/menu" 
-                className="bg-orange-500 text-white px-4 py-2 rounded-lg inline-block"
+                className="border border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white px-4 py-2 rounded-lg inline-block"
               >
-                Shop More
+                Shop Here
               </Link>
             </div>
           ) : (
