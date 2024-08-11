@@ -36,9 +36,10 @@ const Cart = () => {
               </Link>
             </div>
           ) : (
+            <div className="overflow-x-auto">
             <table className="min-w-full table-auto">
               <thead>
-                <tr className="bg-orange-100 border">
+                <tr className="bg-orange-100 border whitespace-nowrap">
                   <th className="text-left py-2 uppercase px-4">Product</th>
                   <th className="text-left py-2 uppercase px-4">Price</th>
                   <th className="text-left py-2 uppercase px-4">Quantity</th>
@@ -47,7 +48,7 @@ const Cart = () => {
               </thead>
               <tbody>
                 {cart.map(item => (
-                  <tr key={item.id} className="border-b">
+                  <tr key={item.id} className="border-b whitespace-nowrap">
                     <td className="py-4 px-4 flex items-center">
                       <img 
                         src={item.image_url} 
@@ -101,6 +102,7 @@ const Cart = () => {
                 </tr>
               </tfoot>
             </table>
+            </div>
           )}
         </div>
       </div>
