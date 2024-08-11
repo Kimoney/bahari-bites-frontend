@@ -54,37 +54,37 @@ const Navbar = () => {
           alt="Bahari Bites Logo"
           className="w-12 h-12 mr-2"
         />
-        <h1 className="text-orange-500 text-2xl font-bold hidden md:block">Bahari Bites</h1>
+        <h1 className="text-orange-500 text-2xl font-bold hidden md:block whitespace-nowrap">Bahari Bites</h1>
       </div>
-      <ul className="flex space-x-7 items-center">
-        <li className={`hidden md:inline text-lg font-bold cursor-pointer ${activeSection === 'home' ? 'text-orange-500' : 'text-black hover:text-orange-500'}`}>
+      <ul className="flex space-x-6 items-center">
+        <li className={`hidden md:inline text-sm md:text-lg font-bold cursor-pointer ${activeSection === 'home' ? 'text-orange-500' : 'text-black hover:text-orange-500'} whitespace-nowrap`}>
           <NavLink to="/" onClick={() => setActiveSection('home')}>
-            Home
+          Home
           </NavLink>
         </li>
-        <li className={`hidden md:inline text-lg font-bold cursor-pointer ${activeSection === 'menu' ? 'text-orange-500' : 'text-black hover:text-orange-500'}`}>
+        <li className={`hidden md:inline text-sm md:text-lg font-bold cursor-pointer ${activeSection === 'menu' ? 'text-orange-500' : 'text-black hover:text-orange-500'} whitespace-nowrap`}>
           <NavLink to="/menu" onClick={() => setActiveSection('menu')}>
-            Menu
+          Menu
           </NavLink>
         </li>
-        <li className={`hidden md:inline text-lg font-bold cursor-pointer ${activeSection === 'howtoorder' ? 'text-orange-500' : 'text-black hover:text-orange-500'}`}>
+        <li className={`hidden md:inline text-sm md:text-lg font-bold cursor-pointer ${activeSection === 'howtoorder' ? 'text-orange-500' : 'text-black hover:text-orange-500'} whitespace-nowrap`}>
           <NavLink to="/howtoorder" onClick={() => setActiveSection('howtoorder')}>
-            How to Order
+          How to Order
           </NavLink>
         </li>
-        <li className={`hidden md:inline text-lg font-bold cursor-pointer ${activeSection === 'about' ? 'text-orange-500' : 'text-black hover:text-orange-500'}`}>
+        <li className={`hidden md:inline text-sm md:text-lg font-bold cursor-pointer ${activeSection === 'about' ? 'text-orange-500' : 'text-black hover:text-orange-500'} whitespace-nowrap`}>
           <NavLink to="/about" onClick={() => setActiveSection('about')}>
-            About Us
+          About Us
           </NavLink>
         </li>
-        <li className={`hidden md:inline text-lg font-bold cursor-pointer ${activeSection === 'testimonials' ? 'text-orange-500' : 'text-black hover:text-orange-500'}`}>
+        <li className={`hidden md:inline text-sm md:text-lg font-bold cursor-pointer ${activeSection === 'testimonials' ? 'text-orange-500' : 'text-black hover:text-orange-500'} whitespace-nowrap`}>
           <NavLink to="/testimonials" onClick={() => setActiveSection('testimonials')}>
-            Testimonials
+          Testimonials
           </NavLink>
         </li>
-        <li className={`hidden md:inline text-lg font-bold cursor-pointer ${activeSection === 'contact' ? 'text-orange-500' : 'text-black hover:text-orange-500'}`}>
+        <li className={`hidden md:inline text-sm md:text-lg font-bold cursor-pointer ${activeSection === 'contact' ? 'text-orange-500' : 'text-black hover:text-orange-500'} whitespace-nowrap`}>
           <NavLink to="/contact" onClick={() => setActiveSection('contact')}>
-            Contact Us
+          Contact Us
           </NavLink>
         </li>
         <li className="md:hidden">
@@ -118,7 +118,7 @@ const Navbar = () => {
           </NavLink>
         </li>
       </ul>
-      <div className="flex space-x-6 relative">
+      <div className="flex space-x-5 relative ml-3">
         <NavLink to="/cart" onClick={() => setActiveSection('cart')}>
           <div className="relative">
             <FaShoppingCart 

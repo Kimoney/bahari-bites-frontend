@@ -7,10 +7,10 @@ const CheckoutSummary = () => {
     const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
     return (
-        <div className="p-4 sm:p-6 lg:p-8">
+        <div className="p-4 sm:p-6 lg:p-8 mt-12">
             <div className="max-w-md mx-auto lg:max-w-3xl">
                 <div className="border border-orange-500 rounded-lg shadow-sm p-4 mt-10 bg-white">
-                    <div className="pb-4 mb-4 flex flex-col items-center sm:items-start">
+                    <div className="pb-4 mb-4 flex flex-col">
                         <h4 className="text-xl font-bold uppercase text-center sm:text-left">Order Summary</h4>
                         <Link to="/cart" className="mt-2 text-orange-500 text-center sm:text-right uppercase">
                             See Details
