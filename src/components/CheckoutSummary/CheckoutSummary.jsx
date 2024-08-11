@@ -25,7 +25,13 @@ const CheckoutSummary = () => {
                     </div>
                     <div className="flex flex-col sm:flex-row justify-between mt-5 mb-5 p-4 border rounded-lg border-gray-300 bg-orange-100">
                         <p className="text-gray-700">MPESA +254 XXX XXX 287</p>
-                        <p className="text-gray-700">MPESA-LOGO</p>
+                        <div className="flex items-center">
+                            <img 
+                                src="https://upload.wikimedia.org/wikipedia/commons/1/15/M-PESA_LOGO-01.svg" 
+                                alt="MPESA Logo" 
+                                className="h-8 w-auto"
+                            />
+                        </div>
                     </div>
                     <div className="flex justify-center mt-8">
                         <Link to="/checkout" className="w-full">
