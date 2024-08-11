@@ -89,7 +89,7 @@ const Menu = () => {
 
       <div className="w-4/5 p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {filteredItems.map(item => (
-          <div key={item.id} className="overflow-hidden rounded-lg border border-default-200 p-2 transition-all duration-300 hover:border-primary hover:shadow-xl">
+          <div key={item.id} className="overflow-hidden rounded-lg border p-2 transition-all duration-300 hover:border-orange-500 hover:shadow-xl">
             <div className="group relative divide-y divide-default-200 overflow-hidden rounded-lg">
               <div className="mx-auto mb-4 h-48">
                 <img src={item.image_url} alt={item.name} className="h-full w-full object-cover transition-all group-hover:scale-105" />
