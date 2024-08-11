@@ -93,7 +93,7 @@ const Cart = () => {
                   <td colSpan="4" className="text-left py-4">
                     <Link 
                       to="/menu" 
-                      className="bg-orange-500 text-white px-4 py-2 rounded-lg mr-4 inline-block"
+                      className="text-orange-500 px-4 py-2 rounded-lg border border-orange-500 mr-4 inline-block hover:bg-orange-500 hover:text-white"
                     >
                       Shop More
                     </Link>
