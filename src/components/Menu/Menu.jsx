@@ -4,6 +4,7 @@ import Sort from '../Sort/Sort';
 import { useCart } from '../../context/CartContext';
 import { FiHeart, FiStar, FiPlus, FiMinus, FiTrash2 } from 'react-icons/fi';
 import CONFIG from '../../../config';
+import { Link } from 'react-router-dom';
 
 const Menu = () => {
   const [menuItems, setMenuItems] = useState([]);
@@ -96,7 +97,9 @@ const Menu = () => {
               </div>
               <div className="pt-2">
                 <div className="mb-4 flex items-center justify-between">
-                  <a className="line-clamp-1 text-xl font-semibold text-default-800 after:absolute after:inset-0" href={`http://localhost:5173/menu/${item.id}`}>{item.name}</a>
+                <Link to={`/menu/${item.id}`} className="line-clamp-1 text-xl font-semibold text-default-800 after:absolute after:inset-0">
+                  {item.name}
+                </Link>
                   <button type="button"><FiHeart className="relative z-10 cursor-pointer transition-all hover:fill-red-500 hover:text-red-500" /></button>
                 </div>
                 

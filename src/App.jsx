@@ -10,6 +10,7 @@ import ContactUs from './components/ContactUs/ContactUs';
 import Footer from './components/Footer/Footer';
 import Cart from './components/Cart/Cart';
 import CheckoutSummary from './components/CheckoutSummary/CheckoutSummary';
+import MenuItemDetail from './components/MenuItemDetail/MenuItemDetail';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/menu" element={<Menu />} />
+          <Route path="/menu/:itemId" element={<MenuItemDetail />} />
           <Route path="/howtoorder" element={<HowToOrder />} />
           <Route path="/about" element={<About />} />
           <Route path="/testimonials" element={<Testimonials />} />
