@@ -12,6 +12,7 @@ import Cart from './components/Cart/Cart';
 import CheckoutSummary from './components/CheckoutSummary/CheckoutSummary';
 import MenuItemDetail from './components/MenuItemDetail/MenuItemDetail';
 import Login from './components/Login/Login';
+import Register from './components/Register/Register';
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/summary" element={<CheckoutSummary />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
         </div>
         <Footer />
