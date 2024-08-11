@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import baharilogo from '../../assets/logo/baharilogo.png';
 
 export default function Register() {
     return (
@@ -8,10 +9,10 @@ export default function Register() {
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img
               alt="Bahari Bites"
-              src="https://p1.hiclipart.com/preview/891/739/825/seafood-background-logo-line-character-beak-fish-orange-sa-wing-png-clipart.jpg"
-              className="mx-auto h-20 w-auto"
+              src={baharilogo}
+              className="mx-auto h-60 w-auto"
             />
-            <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">
+            <h2 className="text-center text-2xl font-bold leading-9 tracking-tight">
               Create Your Account
             </h2>
           </div>

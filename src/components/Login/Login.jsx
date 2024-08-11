@@ -12,7 +12,7 @@ export default function Login() {
               src={baharilogo}
               className="mx-auto h-60 w-auto"
             />
-            <h2 className="mt-4 text-center text-2xl font-bold leading-9 tracking-tight">
+            <h2 className="text-center text-2xl font-bold leading-9 tracking-tight">
               Sign In To Your Account
             </h2>
           </div>

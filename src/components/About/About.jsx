@@ -1,4 +1,5 @@
 import {  FaHistory, FaBullseye, FaHeart, FaConciergeBell } from 'react-icons/fa';
+import baharilogo from '../../assets/logo/baharilogo.png';
 
 export default function About() {
   return (
@@ -7,7 +8,7 @@ export default function About() {
   <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
     <div className="col-span-1 md:col-span-1 flex justify-center items-center">
       <img
-        src="https://p1.hiclipart.com/preview/891/739/825/seafood-background-logo-line-character-beak-fish-orange-sa-wing-png-clipart.jpg"
+        src={baharilogo}
         alt="Bahari Bites Logo"
         className="w-3/4 h-auto"
       />

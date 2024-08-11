@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, Link } from 'react-router-dom';
 import { FaShoppingCart, FaUser, FaHome, FaUtensils, FaInfoCircle, FaPhone, FaReceipt } from 'react-icons/fa';
 import { TbShoppingCartQuestion } from "react-icons/tb";
 import { useCart } from '../../context/CartContext';
-
+import baharilogo from '../../assets/logo/baharilogo.png';
 
 const Navbar = () => {
 
@@ -49,12 +49,13 @@ const Navbar = () => {
   return (
     <nav className="bg-white p-4 shadow-md fixed w-full z-50 flex justify-between items-center">
       <div className="flex items-center">
+        <Link to="/">
         <img
-          src="https://p1.hiclipart.com/preview/891/739/825/seafood-background-logo-line-character-beak-fish-orange-sa-wing-png-clipart.jpg"
+          src={baharilogo}
           alt="Bahari Bites Logo"
-          className="w-12 h-12 mr-2"
+          className="w-12 h-12 mr-2 transform scale-150"
         />
-        <h1 className="text-orange-500 text-2xl font-bold hidden md:block whitespace-nowrap">Bahari Bites</h1>
+        </Link>
       </div>
       <ul className="flex space-x-6 items-center">
         <li className={`hidden md:inline text-sm md:text-lg font-bold cursor-pointer ${activeSection === 'home' ? 'text-orange-500' : 'text-black hover:text-orange-500'} whitespace-nowrap`}>
