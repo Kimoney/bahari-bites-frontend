@@ -11,6 +11,7 @@ import Footer from './components/Footer/Footer';
 import Cart from './components/Cart/Cart';
 import CheckoutSummary from './components/CheckoutSummary/CheckoutSummary';
 import MenuItemDetail from './components/MenuItemDetail/MenuItemDetail';
+import Login from './components/Login/Login';
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/summary" element={<CheckoutSummary />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         </div>
         <Footer />
