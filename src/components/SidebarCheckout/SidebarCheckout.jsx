@@ -24,7 +24,7 @@ const SidebarCheckout = ({ totalPrice, cart }) => {
         <p className="font-bold text-lg">KES {totalPrice.toFixed(2)}</p>
       </div>
       <div className="flex justify-center mt-8">
-        <Link to="/checkout" className="w-full">
+        <Link to="/summary" className="w-full">
           <button className="bg-orange-500 text-white p-4 rounded-lg w-full">
             Checkout
           </button>

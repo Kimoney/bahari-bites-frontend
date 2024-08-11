@@ -9,6 +9,7 @@ import Testimonials from './components/Testimonials/Testimonials';
 import ContactUs from './components/ContactUs/ContactUs';
 import Footer from './components/Footer/Footer';
 import Cart from './components/Cart/Cart';
+import CheckoutSummary from './components/CheckoutSummary/CheckoutSummary';
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/summary" element={<CheckoutSummary />} />
         </Routes>
         </div>
         <Footer />
