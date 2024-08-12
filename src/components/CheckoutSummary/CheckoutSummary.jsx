@@ -34,7 +34,7 @@ const CheckoutSummary = () => {
                         </div>
                     </div>
                     <div className="flex justify-center mt-8">
-                        <Link to="/checkout" className="w-full">
+                        <Link to="/payment-loading" className="w-full">
                             <button className="border font-extrabold border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white p-4 rounded-lg w-full">
                                 PAY NOW KES {totalPrice.toFixed(2)}
                             </button>

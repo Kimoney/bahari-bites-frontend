@@ -14,6 +14,7 @@ import MenuItemDetail from './components/MenuItemDetail/MenuItemDetail';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import UserProfile from './components/UserProfile/UserProfile';
+import PaymentLoading from './components/PaymentLoading/PaymentLoading';
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<UserProfile />} />
+          <Route path="/payment-loading" element={<PaymentLoading />} />
         </Routes>
         </div>
         <Footer />

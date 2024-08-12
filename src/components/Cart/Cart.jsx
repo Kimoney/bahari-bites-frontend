@@ -53,7 +53,7 @@ const Cart = () => {
                       <img 
                         src={item.image_url} 
                         alt={item.name} 
-                        className="h-[1.5cm] w-auto rounded-lg mr-4" 
+                        className="h-[1.5cm] w-[2cm] rounded-lg mr-4" 
                       />
                       <span className="font-bold capitalize">{item.name}</span>
                     </td>
