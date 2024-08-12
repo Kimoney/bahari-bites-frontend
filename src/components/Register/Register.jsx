@@ -19,6 +19,42 @@ export default function Register() {
   
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form action="#" method="POST" className="space-y-6">
+            <div>
+              <div className="flex space-x-4">
+                <div className="flex-1">
+                  <label htmlFor="first-name" className="block text-sm font-medium leading-6">
+                    First Name
+                  </label>
+                  <div className="mt-2">
+                  <input
+                  id="first-name"
+                  name="first-name"
+                  type="text"
+                  required
+                  autoComplete="given-name"
+                  className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-orange-300 placeholder:text-orange-400 focus:ring-2 focus:ring-inset focus:ring-orange-500 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+
+          <div className="flex-1">
+            <label htmlFor="last-name" className="block text-sm font-medium leading-6">
+              Last Name
+            </label>
+            <div className="mt-2">
+              <input
+              id="last-name"
+              name="last-name"
+              type="text"
+              required
+              autoComplete="family-name"
+              className="block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-orange-300 placeholder:text-orange-400 focus:ring-2 focus:ring-inset focus:ring-orange-500 sm:text-sm sm:leading-6"
+            />
+          </div>
+          </div>
+        </div>
+      </div>
+
               <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6">
                   Email address
