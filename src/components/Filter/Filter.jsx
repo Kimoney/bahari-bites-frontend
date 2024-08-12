@@ -9,15 +9,14 @@ const Filter = ({ onFilter, category, setCategory, categories }) => {
   };
 
   return (
-    <div className="mb-4">
-      <label htmlFor="category" className="block text-lg font-bold mb-2">Filter by Category:</label>
+    <div className="mt-4 mb-8">
       <select
         id="category"
         value={category}
         onChange={handleFilterChange}
-        className="block w-full p-2 border border-gray-300 rounded"
+        className="block w-full p-2 border border-gray-300 hover:border-orange-500 rounded"
       >
-        <option value="">All</option>
+        <option value="">Categories</option>
         {categories.map((cat, index) => (
           <option key={index} value={cat}>{cat}</option>
         ))}

@@ -12,6 +12,8 @@ const Menu = () => {
   const [category, setCategory] = useState('');
   const [filteredItems, setFilteredItems] = useState(menuItems);
   const [sortOption, setSortOption] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 20;
 
   const { cart, addToCart, updateQuantity, removeFromCart } = useCart();
 
@@ -40,6 +42,7 @@ const Menu = () => {
       filtered = menuItems.filter(item => item.category === category);
     }
     setFilteredItems(filtered);
+    setCurrentPage(1); // Reset to first page when filtering
   };
 
   const handleSort = (option) => {
@@ -53,6 +56,7 @@ const Menu = () => {
     }
     setFilteredItems(sorted);
     setSortOption(option);
+    setCurrentPage(1); // Reset to first page when sorting
   };
 
   const handleIncrement = (id) => {
@@ -76,11 +80,30 @@ const Menu = () => {
     return acc;
   }, {});
 
+  // Pagination logic
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
+
+  const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+
+  const paginationButtons = [];
+  for (let i = 1; i <= totalPages; i++) {
+    paginationButtons.push(
+      <button
+        key={i}
+        onClick={() => setCurrentPage(i)}
+        className={`px-3 py-1 rounded-lg mb-6 ${i === currentPage ? 'bg-orange-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+      >
+        {i}
+      </button>
+    );
+  }
+
   return (
     <div className="flex flex-col lg:flex-row pt-32 px-4 lg:px-16">
       {/* Filter & Sort */}
-      <div className="lg:w-1/5 w-full mb-8 lg:mb-0 lg:pr-4">
-        <h2 className="text-lg lg:text-xl font-bold text-orange-500 mb-4 hidden lg:block">Filter & Sort</h2>
+      <div className="lg:w-2/12 w-full mb-8 lg:mb-0 lg:pr-4">
         <Filter onFilter={handleFilter} category={category} setCategory={setCategory} categories={categories} />
         <Sort onSort={handleSort} />
       </div>
@@ -88,7 +111,7 @@ const Menu = () => {
       {/* Menu Items */}
       <div className="lg:w-4/5 w-full">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-1 gap-y-3 lg:gap-x-8 lg:gap-y-6 ">
-          {filteredItems.map(item => (
+          {currentItems.map(item => (
             <div key={item.id} className="overflow-hidden rounded-lg border p-2 transition-all duration-300 hover:border-orange-500 hover:shadow-xl">
               <div className="group relative divide-y divide-default-200 overflow-hidden rounded-lg">
                 <div className="mx-auto mb-4 h-48">
@@ -142,6 +165,11 @@ const Menu = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Pagination Controls */}
+        <div className="mt-6 flex justify-center space-x-2">
+          {paginationButtons}
         </div>
       </div>
     </div>
