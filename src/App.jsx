@@ -15,6 +15,7 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import UserProfile from './components/UserProfile/UserProfile';
 import PaymentLoading from './components/PaymentLoading/PaymentLoading';
+import PaymentError from './components/PaymentError/PaymentError';
 
 const App = () => {
   return (
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/payment-loading" element={<PaymentLoading />} />
+          <Route path="/payment-error" element={<PaymentError />} />
         </Routes>
         </div>
         <Footer />
