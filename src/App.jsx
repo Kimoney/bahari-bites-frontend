@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
+import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/Navbar/Navbar';
 import HomePage from './components/HomePage/HomePage';
 import Menu from './components/Menu/Menu';
@@ -19,6 +20,7 @@ import PaymentError from './components/PaymentError/PaymentError';
 
 const App = () => {
   return (
+    <AuthProvider>
     <CartProvider>
     <Router>
       <div className="flex flex-col min-h-screen">
@@ -45,6 +47,7 @@ const App = () => {
       </div>
     </Router>
     </CartProvider>
+    </AuthProvider>
   );
 };
 
