@@ -49,14 +49,16 @@ const Cart = () => {
               <tbody>
                 {cart.map(item => (
                   <tr key={item.id} className="border-b whitespace-nowrap">
-                    <td className="py-4 px-4 flex items-center">
+                  <Link to={`/menu/${item.id}`}>
+                    <td className="py-4 px-4 items-center">
                       <img 
                         src={item.image_url} 
                         alt={item.name} 
-                        className="h-[1.5cm] w-[2cm] rounded-lg mr-4" 
+                        className="h-[1.5cm] w-[2.5cm] rounded-lg mr-4 mb-2" 
                       />
                       <span className="font-bold capitalize">{item.name}</span>
                     </td>
+                    </Link>
                     <td className="py-4 px-4">
                       <span className="text-gray-600">KES {item.price}</span>
                     </td>
