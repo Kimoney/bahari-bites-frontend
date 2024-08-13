@@ -1,4 +1,4 @@
-import { FaPhone, FaEnvelope } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaFacebookF, FaLinkedinIn, FaInstagram, FaTwitter } from 'react-icons/fa';
 import baharilogo from '../../assets/logo/baharilogo.png';
 
 export default function ContactUs() {
@@ -72,17 +72,31 @@ export default function ContactUs() {
         {/* Contact Information Section */}
         <div className="flex-1 bg-white p-6 lg:p-8 rounded-lg shadow-lg">
           <img src={baharilogo} alt="Bahari Bites Logo" className="h-40 w-auto mb-4 mx-auto transform scale-125" />
-          <h3 className="text-2xl text-orange-500 font-bold mb-6 text-center">Talk to us</h3>
-          <div className="flex items-center text-gray-700 mb-6 justify-center">
-            <FaEnvelope className="text-orange-500 mr-2" size={20} />
+          <h3 className="text-2xl font-bold mb-6 text-center">Get in touch</h3>
+          <div className="flex items-center justify-center gap-4 mt-8 mb-10">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+              <FaFacebookF className="hover:text-orange-500 transition-colors duration-300" size={30} />
+            </a>
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+              <FaLinkedinIn className="hover:text-orange-500 transition-colors duration-300" size={30} />
+            </a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+              <FaInstagram className="hover:text-orange-500 transition-colors duration-300" size={30} />
+            </a>
+            <a href="x.com" target="_blank" rel="noopener noreferrer">
+              <FaTwitter className="hover:text-orange-500 transition-colors duration-300" size={30} />
+            </a>
+          </div>
+          <div className="flex items-left ml-8 mb-8">
+            <FaEnvelope className="text-orange-500 mr-4" size={20} />
             <span>123 GPO, Nairobi, Kenya</span>
           </div>
-          <div className="flex items-center text-gray-700 mb-6 justify-center">
-            <FaPhone className="text-orange-500 mr-2" size={20} />
+          <div className="flex items-left ml-8 mb-8">
+            <FaPhone className="text-orange-500 mr-4" size={20} />
             <span>+254 721 345 678</span>
           </div>
-          <div className="flex items-center text-gray-700 mb-8 justify-center">
-            <FaEnvelope className="text-orange-500 mr-2" size={20} />
+          <div className="flex items-left ml-8 mb-8">
+            <FaEnvelope className="text-orange-500 mr-4" size={20} />
             <span>info@baharibites.com</span>
           </div>
         </div>
