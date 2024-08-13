@@ -4,6 +4,7 @@ import { FaShoppingCart, FaUser, FaHome, FaUtensils, FaInfoCircle, FaPhone, FaRe
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/react';
 import { TbShoppingCartQuestion } from "react-icons/tb";
 import { useCart } from '../../context/CartContext';
+import { useAuth } from '../../context/AuthContext';
 import baharilogo from '../../assets/logo/baharilogo.png';
 
 const Navbar = () => {
@@ -12,6 +13,8 @@ const Navbar = () => {
   // Calculate total items in cart
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
   const totalUniqueItems = cart.length;
+
+  const { authState, logout } = useAuth();
 
 
   const location = useLocation();
@@ -134,10 +137,10 @@ const Navbar = () => {
           )}
         </div>
       </NavLink>
-      
+
       <Menu as="div" className="relative inline-block text-left">
-        <div>
-        <MenuButton className="">
+      <div>
+        <MenuButton>
           <FaUser className="text-black hover:text-orange-500 cursor-pointer" size={20} />
         </MenuButton>
       </div>
@@ -147,35 +150,57 @@ const Navbar = () => {
         className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
       >
         <div className="py-1">
-          <MenuItem>
-            <a
-              href="/profile"
-              className="block px-4 py-2 text-sm hover:bg-orange-100"
-            >
-              Profile
-            </a>
-          </MenuItem>
-          <MenuItem>
-            <a
-              href="/help"
-              className="block px-4 py-2 text-sm hover:bg-orange-100"
-            >
-              Help
-            </a>
-          </MenuItem>
-          <form action="#" method="POST">
-            <MenuItem>
-              <button
-                type="submit"
-                className="block w-full px-4 py-2 text-left text-sm hover:bg-orange-100"
-              >
-                Logout
-              </button>
-            </MenuItem>
-          </form>
+          {authState.isAuthenticated ? (
+            <>
+              <MenuItem>
+                <a
+                  href="/profile"
+                  className="block px-4 py-2 text-sm hover:bg-orange-100"
+                >
+                  Profile
+                </a>
+              </MenuItem>
+              <MenuItem>
+                <a
+                  href="/help"
+                  className="block px-4 py-2 text-sm hover:bg-orange-100"
+                >
+                  Help
+                </a>
+              </MenuItem>
+              <MenuItem>
+                <button
+                  onClick={logout}
+                  className="block w-full px-4 py-2 text-left text-sm hover:bg-orange-100"
+                >
+                  Logout
+                </button>
+              </MenuItem>
+            </>
+          ) : (
+            <>
+              <MenuItem>
+                <a
+                  href="/login"
+                  className="block px-4 py-2 text-sm hover:bg-orange-100"
+                >
+                  Login
+                </a>
+              </MenuItem>
+              <MenuItem>
+                <a
+                  href="/register"
+                  className="block px-4 py-2 text-sm hover:bg-orange-100"
+                >
+                  Register
+                </a>
+              </MenuItem>
+            </>
+          )}
         </div>
       </MenuItems>
     </Menu>
+      
     </div>
     </nav>
   );

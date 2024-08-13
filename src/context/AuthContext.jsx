@@ -1,15 +1,14 @@
-// AuthContext.js
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 export const AuthContext = createContext();
 
 export const useAuth = () => {
     const context = useContext(AuthContext);
     if (!context) {
-      throw new Error('useAuth must be used within a AuthProvider');
+        throw new Error('useAuth must be used within an AuthProvider');
     }
     return context;
-  };
+};
 
 export const AuthProvider = ({ children }) => {
     const [authState, setAuthState] = useState({
@@ -18,14 +17,25 @@ export const AuthProvider = ({ children }) => {
         token: null,
     });
 
+    useEffect(() => {
+        // Retrieve and set the authState from localStorage when the provider mounts
+        const savedAuthState = localStorage.getItem('authState');
+        if (savedAuthState) {
+            setAuthState(JSON.parse(savedAuthState));
+        }
+    }, []);
+
     const login = (user, token) => {
-        setAuthState({
+        const newAuthState = {
             isAuthenticated: true,
             user: user,
             token: token,
-        });
+        };
         
-        localStorage.setItem('token', token);
+        setAuthState(newAuthState);
+        
+        // Save newAuthState in localStorage
+        localStorage.setItem('authState', JSON.stringify(newAuthState));
     };
 
     const logout = () => {
@@ -34,7 +44,9 @@ export const AuthProvider = ({ children }) => {
             user: null,
             token: null,
         });
-        localStorage.removeItem('token');
+        
+        // Remove authState from localStorage
+        localStorage.removeItem('authState');
     };
 
     return (
