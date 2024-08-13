@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavLink, useLocation, Link } from 'react-router-dom';
+import { NavLink, useLocation, Link, useNavigate } from 'react-router-dom';
 import { FaShoppingCart, FaUser, FaHome, FaUtensils, FaInfoCircle, FaPhone, FaReceipt } from 'react-icons/fa';
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/react';
 import { TbShoppingCartQuestion } from "react-icons/tb";
@@ -9,7 +9,7 @@ import baharilogo from '../../assets/logo/baharilogo.png';
 
 const Navbar = () => {
 
-  const { cart } = useCart();
+  const { cart, clearCart } = useCart();
   // Calculate total items in cart
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
   const totalUniqueItems = cart.length;
@@ -18,7 +18,15 @@ const Navbar = () => {
 
 
   const location = useLocation();
+  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState('');
+
+  // Logout Logic
+  const handleLogout = () => {
+    clearCart();   // Clear the cart first
+    logout();      // Then logout the user
+    navigate('/'); // Redirect to the home page
+  };
 
   useEffect(() => {
     // Set active section based on current URL path
@@ -49,6 +57,7 @@ const Navbar = () => {
         setActiveSection('');
     }
   }, [location]);
+  
 
   return (
     <nav className="bg-white p-4 shadow-md fixed w-full z-50 flex justify-between items-center">
@@ -170,7 +179,7 @@ const Navbar = () => {
               </MenuItem>
               <MenuItem>
                 <button
-                  onClick={logout}
+                  onClick={handleLogout}
                   className="block w-full px-4 py-2 text-left text-sm hover:bg-orange-100"
                 >
                   Logout
