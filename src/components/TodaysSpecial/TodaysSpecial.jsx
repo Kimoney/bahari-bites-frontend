@@ -58,7 +58,7 @@ const TodaysSpecial = () => {
 
   return (
     <div className="container border p-4 rounded-xl mx-auto my-16">
-      <h2 className="text-3xl font-bold text-left text-orange-500 mb-8">Today's Special</h2>
+      <h2 className="text-2xl font-bold text-left mb-8 border-b border-orange-500 pb-4 inline-block">Bahari Bites Specials</h2>
       <Carousel
         responsive={responsive}
         infinite={true}

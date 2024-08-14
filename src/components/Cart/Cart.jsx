@@ -109,9 +109,11 @@ const Cart = () => {
           )}
         </div>
       </div>
-      <div className="w-full lg:w-4/12 sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto">
-        <SidebarCheckout totalPrice={totalPrice} cart={cart} />
-      </div>
+      { cart.length > 0 && (
+        <div className="w-full lg:w-4/12 sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto">
+          <SidebarCheckout totalPrice={totalPrice} cart={cart} />
+        </div>
+      )}
     </div>
   );
 };
