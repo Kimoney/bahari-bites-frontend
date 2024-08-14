@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 const SidebarCheckout = ({ totalPrice, cart }) => {
+  const { authState } = useAuth();
+
   return (
     <div className="bg-white border border-slate-200 rounded-lg shadow-sm p-4">
       <div className="border-b border-gray-300 pb-4 mb-4">
@@ -23,12 +26,35 @@ const SidebarCheckout = ({ totalPrice, cart }) => {
         <p className="font-bold text-lg">Subtotal</p>
         <p className="font-bold text-lg">KES {totalPrice.toFixed(2)}</p>
       </div>
-      <div className="flex justify-center mt-8">
-        <Link to="/summary" className="w-full">
-          <button className="bg-orange-500 text-white p-4 rounded-lg w-full">
-            Checkout
-          </button>
-        </Link>
+      <div className="flex flex-col justify-center mt-8 gap-4">
+        {authState.isAuthenticated ? (
+          <Link to="/summary" className="w-full">
+            <button className="bg-orange-500 text-white p-4 rounded-lg w-full">
+              Checkout
+            </button>
+          </Link>
+        ) : (
+          <>
+            <button className="bg-red-200 p-4 rounded-lg w-full cursor-not-allowed" disabled>
+              You have to be logged in to checkout
+            </button>
+            <button className="bg-gray-400 text-white p-4 rounded-lg w-full cursor-not-allowed" disabled>
+              Checkout
+            </button>
+            <div className="flex gap-4">
+              <Link to="/login" className="w-1/2">
+                <button className="border border-orange-500 text-orange-500 hover:text-white hover:bg-orange-500 p-4 rounded-lg w-full">
+                  Login
+                </button>
+              </Link>
+              <Link to="/register" className="w-1/2">
+                <button className="border border-orange-500 text-orange-500 hover:text-white hover:bg-orange-500 p-4 rounded-lg w-full">
+                  Register
+                </button>
+              </Link>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
