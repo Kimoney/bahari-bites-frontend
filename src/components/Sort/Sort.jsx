@@ -9,7 +9,7 @@ const Sort = ({ onSort }) => {
   };
 
   return (
-    <div className="mb-4">
+    <div className="mt-2 mb-2">
       <select
         id="sort"
         value={sortOption}

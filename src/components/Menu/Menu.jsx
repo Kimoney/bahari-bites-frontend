@@ -101,15 +101,16 @@ const Menu = () => {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row pt-32 px-4 lg:px-16">
-      {/* Filter & Sort */}
-      <div className="lg:w-2/12 w-full mb-8 lg:mb-0 lg:pr-4">
-        <Filter onFilter={handleFilter} category={category} setCategory={setCategory} categories={categories} />
-        <Sort onSort={handleSort} />
-      </div>
-
+    <div className="flex flex-col lg:flex-row lg:pt-28 pt-20 px-4 lg:px-16 justify-center">  
+      
       {/* Menu Items */}
-      <div className="lg:w-4/5 w-full">
+
+      <div className="lg:w-4/5 w-full lg:sticky lg:top-24"> {/* Adjust top value here */}
+        {/* Filter & Sort */}
+        <div className="flex justify-around w-full mb-4">
+          <Filter onFilter={handleFilter} category={category} setCategory={setCategory} categories={categories} />
+          <Sort onSort={handleSort} />
+        </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-1 gap-y-3 lg:gap-x-8 lg:gap-y-6 ">
           {currentItems.map(item => (
             <div key={item.id} className="overflow-hidden rounded-lg border p-2 transition-all duration-300 hover:border-orange-500 hover:shadow-xl">

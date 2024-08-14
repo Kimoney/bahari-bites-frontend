@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 const Filter = ({ onFilter, category, setCategory, categories }) => {
 
 
@@ -9,7 +7,7 @@ const Filter = ({ onFilter, category, setCategory, categories }) => {
   };
 
   return (
-    <div className="mt-4 mb-8">
+    <div className="mt-2 mb-2">
       <select
         id="category"
         value={category}
