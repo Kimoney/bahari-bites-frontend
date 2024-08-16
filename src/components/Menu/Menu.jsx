@@ -127,7 +127,7 @@ const Menu = () => {
                   </div>
                   
                   <div className="mb-4 flex items-end justify-between">
-                    <h4 className="text-base lg:text-2xl font-bold leading-9 text-default-900">KES {item.price}</h4>
+                    <h4 className="text-base lg:text-xl leading-9 text-default-900">KES {item.price}</h4>
                     <span className="mb-4 inline-flex items-center gap-2">
                       <span className="rounded-full bg-orange-500 p-1">
                         <FiStar className="fill-white text-white text-sm lg:text-base" />

@@ -1,4 +1,6 @@
-import { FaPhone, FaEnvelope, FaFacebookF, FaLinkedinIn, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { FaFacebookF, FaLinkedinIn, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { MdContactMail, MdAlternateEmail, MdLocationOn } from "react-icons/md";
+import { PiPhoneCallFill } from "react-icons/pi";
 import baharilogo from '../../assets/logo/baharilogo.png';
 
 export default function ContactUs() {
@@ -62,7 +64,7 @@ export default function ContactUs() {
             </div>
             <button
               type="submit"
-              className="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 transition"
+              className="border border-orange-500 text-orange-500 py-2 px-4 rounded-md hover:bg-orange-600 hover:text-white transition"
             >
               Submit
             </button>
@@ -88,16 +90,20 @@ export default function ContactUs() {
             </a>
           </div>
           <div className="flex items-left ml-8 mb-8">
-            <FaEnvelope className="text-orange-500 mr-4" size={20} />
+            <MdContactMail className="text-orange-500 mr-4" size={20} />
             <span>123 GPO, Nairobi, Kenya</span>
           </div>
           <div className="flex items-left ml-8 mb-8">
-            <FaPhone className="text-orange-500 mr-4" size={20} />
+            <PiPhoneCallFill className="text-orange-500 mr-4" size={20} />
             <span>+254 721 345 678</span>
           </div>
           <div className="flex items-left ml-8 mb-8">
-            <FaEnvelope className="text-orange-500 mr-4" size={20} />
+            <MdAlternateEmail className="text-orange-500 mr-4" size={20} />
             <span>info@baharibites.com</span>
+          </div>
+          <div className="flex items-left ml-8 mb-8">
+            <MdLocationOn className="text-orange-500 mr-4" size={20} />
+            <span>Nairobi, Kenya</span>
           </div>
         </div>
       </div>
